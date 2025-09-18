@@ -1,0 +1,11 @@
+{
+  "experiment_name": "proxy_validation",
+  "method_name": "Volumetric Efficiency",
+  "timestamp": 1758129701.779857,
+  "datetime": "2025-09-18T00:21:41.779857",
+  "duration_seconds": 0.018001317977905273,
+  "success": false,
+  "error_message": "'ExperimentRunner' object has no attribute '_find_convergence_iteration'",
+  "metadata": {},
+  "results": {}
+}

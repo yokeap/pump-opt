@@ -1,0 +1,11 @@
+{
+  "experiment_name": "proxy_validation",
+  "method_name": "Volumetric Efficiency",
+  "timestamp": 1758129584.4081805,
+  "datetime": "2025-09-18T00:19:44.408180",
+  "duration_seconds": 0.009002208709716797,
+  "success": false,
+  "error_message": "'ExperimentRunner' object has no attribute '_run_single_optimization'",
+  "metadata": {},
+  "results": {}
+}
