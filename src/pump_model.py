@@ -31,8 +31,10 @@ class RealisticPumpSimulator:
     def __init__(self, 
                  system_head: float = 30.0,
                  pump_type: str = "centrifugal",
-                 rated_power: float = 7.5,  # kW
-                 rated_flow: float = 100.0,  # m³/h
+                #  rated_power: float = 7.5,  # kW
+                #  rated_flow: float = 100.0,  # m³/h
+                 rated_power: float = 200.0,  # kW
+                 rated_flow: float = 1000.0,  # m³/h
                  noise_level: float = 0.02):
         
         self.system_head = system_head

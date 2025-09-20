@@ -92,10 +92,10 @@ def run_algorithm_comparison():
     results = runner.comprehensive_comparison(
         methods=['TPE', 'ESC', 'Random', 'GridSearch'],
         test_scenarios=[
-            {'head': 30, 'noise': 0.02, 'name': 'Baseline'},
-            {'head': 45, 'noise': 0.02, 'name': 'High Head'},  
-            {'head': 25, 'noise': 0.05, 'name': 'Noisy'},
-            {'head': 35, 'noise': 0.02, 'name': 'Medium Head'}
+            {'head': 30, 'noise': 0.05, 'name': 'Baseline'},
+            {'head': 45, 'noise': 0.05, 'name': 'High Head'},  
+            {'head': 25, 'noise': 0.075, 'name': 'Noisy'},
+            {'head': 35, 'noise': 0.05, 'name': 'Medium Head'}
         ],
         iterations=25,
         n_trials=10  # Multiple runs for statistics
