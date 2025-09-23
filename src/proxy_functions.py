@@ -1,3 +1,7 @@
+# ==============================================================================
+# FILE: src/proxy_functions.py
+# ==============================================================================
+
 from abc import ABC, abstractmethod
 import numpy as np
 from typing import Dict, Any

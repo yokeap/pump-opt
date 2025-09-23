@@ -1,6 +1,6 @@
-"""
-Enhanced Result Summary Generator - Create comprehensive summary from ALL experiment types
-"""
+# ==============================================================================
+# FILE: summarized.py
+# ==============================================================================
 
 import json
 import pandas as pd

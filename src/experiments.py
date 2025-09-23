@@ -453,7 +453,7 @@ class ExperimentRunner:
             print(f"Head changes: {head_changes} (slow, realistic schedule)")
             
             # Setup pump and optimizer
-            pump = RealisticPumpSimulator(system_head=initial_head, noise_level=0.025)
+            pump = RealisticPumpSimulator(system_head=initial_head, noise_level=0.02)
             
             if optimization_method == 'TPE':
                 optimizer = TPEOptimizer(
