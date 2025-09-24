@@ -457,12 +457,14 @@ class ExperimentRunner:
             
             if optimization_method == 'TPE':
                 optimizer = TPEOptimizer(
-                    proxy_function=VolumetricEfficiencyProxy(),
+                    # proxy_function=VolumetricEfficiencyProxy(),
+                    proxy_function=NormalizedProxy(),
                     max_freq_change=1.5
                 )
             elif optimization_method == 'ESC':
                 optimizer = ExtremumSeekingControl(
-                    proxy_function=VolumetricEfficiencyProxy(),
+                    # proxy_function=VolumetricEfficiencyProxy(),
+                    proxy_function=NormalizedProxy(),
                     step_size=1.5
                 )
             else:
@@ -659,7 +661,8 @@ class ExperimentRunner:
             # Setup
             pump = RealisticPumpSimulator(system_head=30, noise_level=0.02)
             optimizer = TPEOptimizer(
-                proxy_function=VolumetricEfficiencyProxy(), 
+                # proxy_function=VolumetricEfficiencyProxy(), 
+                proxy_function=NormalizedProxy(),
                 max_freq_change=1.0
             )
             

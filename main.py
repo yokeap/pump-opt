@@ -51,8 +51,8 @@ def run_proxy_validation():
     
     # Test proxy across different conditions
     results = runner.validate_proxy_function(
-        proxy_class=VolumetricEfficiencyProxy,
-        # proxy_class=NormalizedProxy,
+        # proxy_class=VolumetricEfficiencyProxy,
+        proxy_class=NormalizedProxy,
         test_heads=[20, 25, 30, 35, 40, 45, 50],
         test_flows=[0.7, 0.8, 0.9, 1.0, 1.1],  # Relative to rated
         noise_levels=[0.01, 0.02, 0.03, 0.05]
