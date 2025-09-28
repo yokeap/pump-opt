@@ -1,0 +1,3 @@
+change_iteration,change_time_hours,head_change,bep_shift,mean_adaptation_error,final_error,adaptation_iterations,adaptation_hours,adaptation_success,method
+50,8.333333333333334,30m -> 35m,6.0,28.54774899999999,34.247748999999985,,,False,ESC
+70,11.666666666666666,35m -> 40m,6.0,34.247748999999985,34.247748999999985,,,False,ESC

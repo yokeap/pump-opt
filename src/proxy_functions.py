@@ -1,5 +1,5 @@
 # ==============================================================================
-# FILE: src/proxy_functions.py
+# FILE: src/proxy_functions.py (Updated with Linear Q/P Proxy)
 # ==============================================================================
 
 from abc import ABC, abstractmethod
@@ -19,6 +19,49 @@ class ProxyFunction(ABC):
     def get_name(self) -> str:
         """Get proxy function name"""
         pass
+
+class LinearProxy(ProxyFunction):
+    """Linear Q/P proxy - baseline for theoretical comparison"""
+    
+    def __init__(self, rated_flow: float = 100.0):
+        self.rated_flow = rated_flow
+        self.name = "Linear Q/P"
+        
+    def calculate(self, measurement: PumpMeasurement) -> float:
+        """Calculate linear Q/P proxy"""
+        Q = measurement.flow
+        P = measurement.power
+        PF = measurement.power_factor
+        
+        if Q <= 0 or P <= 0:
+            return -100.0
+        
+        # Simple linear relationship: (Q/P) × PF
+        proxy = (Q / P) * PF
+        
+        return proxy
+    
+    def get_name(self) -> str:
+        return self.name
+
+class OriginalProxy(ProxyFunction):
+    """Original (Q²/P) × PF proxy for comparison"""
+    
+    def __init__(self):
+        self.name = "Original Q²/P"
+        
+    def calculate(self, measurement: PumpMeasurement) -> float:
+        Q = measurement.flow
+        P = measurement.power  
+        PF = measurement.power_factor
+        
+        if Q <= 0 or P <= 0:
+            return -100.0
+            
+        return (Q**2 / P) * PF
+    
+    def get_name(self) -> str:
+        return self.name
 
 class VolumetricEfficiencyProxy(ProxyFunction):
     """Winner: Volumetric efficiency proxy with PF amplification"""
@@ -51,31 +94,12 @@ class VolumetricEfficiencyProxy(ProxyFunction):
     def get_name(self) -> str:
         return self.name
 
-class OriginalProxy(ProxyFunction):
-    """Original (Q²/P) × PF proxy for comparison"""
-    
-    def __init__(self):
-        self.name = "Original Q²/P×PF"
-        
-    def calculate(self, measurement: PumpMeasurement) -> float:
-        Q = measurement.flow
-        P = measurement.power  
-        PF = measurement.power_factor
-        
-        if Q <= 0 or P <= 0:
-            return -100.0
-            
-        return (Q**2 / P) * PF
-    
-    def get_name(self) -> str:
-        return self.name
-
 class NormalizedProxy(ProxyFunction):
     """Normalized (Q/√P) × PF proxy"""
     
     def __init__(self, rated_flow: float = 100.0):
         self.rated_flow = rated_flow
-        self.name = "Volumetric Efficiency"
+        self.name = "Normalized Q/√P"
         
     def calculate(self, measurement: PumpMeasurement) -> float:
         Q = measurement.flow

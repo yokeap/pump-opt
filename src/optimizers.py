@@ -307,7 +307,7 @@ class TPEOptimizer(BEPOptimizer):
         # TPE configuration optimized for pump optimization
         sampler = optuna.samplers.TPESampler(
             seed=42,
-            n_startup_trials=3,      # Quick startup
+            n_startup_trials=7,      # Quick startup
             n_ei_candidates=24,      # Good exploration
             multivariate=True,
             warn_independent_sampling=False
