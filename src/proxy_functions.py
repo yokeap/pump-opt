@@ -20,7 +20,7 @@ class ProxyFunction(ABC):
         """Get proxy function name"""
         pass
 
-class LinearProxy(ProxyFunction):
+class firstOrderProxy(ProxyFunction):
     """Linear Q/P proxy - baseline for theoretical comparison"""
     
     def __init__(self, rated_flow: float = 100.0):
@@ -44,7 +44,7 @@ class LinearProxy(ProxyFunction):
     def get_name(self) -> str:
         return self.name
 
-class OriginalProxy(ProxyFunction):
+class secondOrderProxy(ProxyFunction):
     """Original (Q²/P) × PF proxy for comparison"""
     
     def __init__(self):
