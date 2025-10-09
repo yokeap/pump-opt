@@ -41,7 +41,7 @@ class CommercialPumpSimulator:
     
     def __init__(self,
                  system_head: float = 30.0,
-                 rated_power: float = 0.5,  # kW (0.5cv)
+                 rated_power: float = 1.0,  # kW (0.5cv)
                  rated_flow: float = 3.0,   # m³/h (CORRECTED)
                  rated_head: float = 35.0,  # m (CORRECTED)
                  rated_eff: float = 0.54,   # 54% (CORRECTED)
@@ -68,9 +68,9 @@ class CommercialPumpSimulator:
         # Head equation: H(Q,f) = c₀(f/60)² + c₁(f/60)Q + c₂Q²
         # Adjusted to pass through (Q=3, H=35) at f=60Hz
         self.head_coeffs = {
-            'c0': 48.0,     # Shutoff head coefficient (f/60)²
-            'c1': -2.8,     # Linear flow term (f/60)Q
-            'c2': -0.85     # Quadratic flow term Q²
+            'c0': 50.914,     # Shutoff head coefficient (f/60)²
+            'c1': -0.909,     # Linear flow term (f/60)Q
+            'c2': -1.404     # Quadratic flow term Q²
         }
         
         # Efficiency equation: η(Q,f) - calibrated for peak around 3 m³/h
@@ -113,6 +113,41 @@ class CommercialPumpSimulator:
         # Fine-tune if needed
         if abs(H_check - self.rated_head) > 1.0:
             print("  Warning: Head calibration may need adjustment")
+
+    def _calculate_motor_efficiency(self, p: float) -> float:
+        """
+        Calculate motor efficiency based on normalized mechanical power output
+        
+        Args:
+            p: Normalized mechanical power (P_mechanical / P_rated)
+            
+        Returns:
+            Motor efficiency (0-1)
+            
+        Formula: η_M = p / (p + k0 + k1*p + k2*p²)
+        where k0 = 0.331202, k1 = -0.16555, k2 = 0.396851
+        """
+        # Motor loss coefficients from manufacturer data
+        k0 = 0.331202   # Constant losses
+        k1 = -0.16555   # Linear load losses
+        k2 = 0.396851   # Quadratic load losses
+        
+        # Avoid division by zero
+        if p < 0.001:
+            return 0.50  # Low efficiency at very low loads
+        
+        # Calculate motor efficiency
+        denominator = p + k0 + k1 * p + k2 * p**2
+        
+        if denominator > 0:
+            motor_eff = p / denominator
+        else:
+            motor_eff = 0.50
+        
+        # Clip to reasonable physical bounds
+        motor_eff = np.clip(motor_eff, 0.40, 0.95)
+        
+        return motor_eff
     
     def _calculate_head(self, flow: float, frequency: float) -> float:
         """Calculate pump head using calibrated equation"""
@@ -286,12 +321,21 @@ class CommercialPumpSimulator:
         
         P_hydraulic = (rho * g * Q_m3s * head) / 1000  # kW
         
-        # Electrical power accounting for efficiencies
-        if pump_eff > 0.01 and self.motor_efficiency > 0:
-            P_electrical = P_hydraulic / (pump_eff * self.motor_efficiency)
+        # Motor mechanical power (pump shaft power)
+        if pump_eff > 0.01:
+            P_mechanical = P_hydraulic / pump_eff
         else:
-            P_electrical = 0.05  # Minimum idling power
+            P_mechanical = 0.05  # Minimum idling power
         
+        # Calculate normalized mechanical power
+        p = P_mechanical / self.rated_power
+        
+        # Calculate motor efficiency using the formula
+        # motor_eff = self._calculate_motor_efficiency(p)
+        motor_eff = self.motor_efficiency  # Use fixed motor efficiency for simplicity
+        
+        # Electrical power
+        P_electrical = P_mechanical / motor_eff
         P_electrical = max(0.02, min(P_electrical, self.rated_power * 1.5))
         
         # Estimate current (assuming 3-phase 220V for small pump)

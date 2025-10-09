@@ -8,18 +8,50 @@ from matplotlib import rcParams
 from src.commercial_pump_model import CommercialPumpSimulator
 from src.proxy_functions import firstOrderProxy
 
-# Configure matplotlib for publication quality (Origin style)
-rcParams['font.family'] = 'Arial'
-rcParams['font.size'] = 11
-rcParams['axes.linewidth'] = 1.5
-rcParams['xtick.major.width'] = 1.5
-rcParams['ytick.major.width'] = 1.5
-rcParams['xtick.major.size'] = 6
-rcParams['ytick.major.size'] = 6
-rcParams['xtick.direction'] = 'in'
-rcParams['ytick.direction'] = 'in'
-rcParams['xtick.top'] = True
-rcParams['ytick.right'] = True
+rcParams.update({
+    # --- Font and text ---
+    'font.family': 'serif',
+    'font.serif': ['Times New Roman'],
+    'font.size': 15,  # base font size for papers (10–11pt is typical)
+    'axes.labelsize': 15,
+    'axes.titlesize': 15,
+    'legend.fontsize': 15,
+    'xtick.labelsize': 15,
+    'ytick.labelsize': 15,
+    'mathtext.fontset': 'cm',   # Use Computer Modern math font (LaTeX-style)
+    'axes.unicode_minus': False,
+
+    # --- Lines and markers ---
+    'lines.linewidth': 2.0,
+    'lines.markersize': 7,
+    'axes.linewidth': 1.2,
+    'xtick.major.width': 1.2,
+    'ytick.major.width': 1.2,
+    'xtick.major.size': 5,
+    'ytick.major.size': 5,
+    'xtick.direction': 'in',
+    'ytick.direction': 'in',
+    'xtick.top': True,
+    'ytick.right': True,
+
+    # --- Figure layout ---
+    'figure.figsize': (8, 6),
+    'figure.dpi': 300,
+    'savefig.dpi': 300,
+    'savefig.bbox': 'tight',
+    'savefig.format': 'pdf',
+
+    # --- Colors ---
+    'axes.prop_cycle': plt.cycler(color=['#1f77b4', '#d62728', '#2ca02c', '#9467bd', '#ff7f0e']),
+
+    # --- Legend style ---
+    'legend.frameon': True,
+    'legend.edgecolor': 'black',
+    'legend.fancybox': False,
+
+    # --- Grid style (disabled for Origin-like look) ---
+    'axes.grid': False,
+})
 
 def collect_data_at_constant_head(pump, proxy, target_head, freq_range=(30, 65, 100)):
     """Collect data at a single constant head"""
@@ -114,13 +146,13 @@ def create_publication_charts():
         
         # Plot efficiency curve
         ax1.plot(data['flows'], data['effs']*100, 
-                color=colors[i], linewidth=2.5, 
+                color=colors[i], linewidth=1.5, 
                 label=f'{head} m', zorder=2)
         
         # Mark BEP with cross
         ax1.plot(data['bep_flow'], data['bep_eff']*100, 
-                marker='+', color=colors[i], markersize=14, 
-                markeredgewidth=3, zorder=3)
+                marker='s', color=colors[i], markersize=7, 
+                markeredgewidth=1.5, zorder=3)
     
     # Styling
     ax1.set_xlabel('Flow (m³/h)', fontsize=13, fontweight='bold')
