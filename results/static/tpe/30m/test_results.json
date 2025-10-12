@@ -1,0 +1,33 @@
+{
+  "test_parameters": {
+    "target_head": 30.0,
+    "max_iterations": 30,
+    "time_per_evaluation": 2.5,
+    "frequency_range": [
+      30,
+      65
+    ],
+    "proxy_function": "firstOrderProxy"
+  },
+  "true_bep": {
+    "flow": 3.141363696756866,
+    "efficiency": 0.572420823187294,
+    "frequency": 57.26130653266332
+  },
+  "optimizer": {
+    "predicted_bep": {
+      "flow": 2.978909952488395,
+      "efficiency": 0.5719383738124862,
+      "frequency": 55.7,
+      "iteration": 7
+    },
+    "metrics": {
+      "relative_flow_error_pct": 5.171440175366761,
+      "efficiency_difference_pct": 0.04824493748077918,
+      "evaluations_to_bep": 6,
+      "time_to_bep_minutes": 30.0,
+      "total_evaluations": 30,
+      "flow_error_abs": 0.16245374426847103
+    }
+  }
+}

@@ -216,7 +216,8 @@ class CommercialPumpSimulator:
         
         # Return the solution with smallest error
         candidates.sort(key=lambda x: x[1])
-        return candidates[0][0]
+        flow = candidates[0][0] * (1 + self.rng.normal(0, self.noise_level))
+        return flow
         
     def _calculate_pump_efficiency(self, flow: float, frequency: float) -> float:
         """
@@ -337,6 +338,7 @@ class CommercialPumpSimulator:
         # Electrical power
         P_electrical = P_mechanical / motor_eff
         P_electrical = max(0.02, min(P_electrical, self.rated_power * 1.5))
+        P_electrical = P_electrical * (1 + self.rng.normal(0, self.noise_level))
         
         # Estimate current (assuming 3-phase 220V for small pump)
         voltage = 220.0  # More typical for 0.5kW pump

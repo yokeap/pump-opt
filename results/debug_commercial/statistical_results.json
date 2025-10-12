@@ -1,0 +1,37 @@
+{
+    "correlation_analysis": {
+        "pearson_r": 0.8455508421480173,
+        "r_squared": -0.3524691260386632,
+        "p_value": 0.15444915785198265,
+        "sample_size": 4
+    },
+    "error_metrics": {
+        "mean_absolute_error_m3h": 0.3193152317755724,
+        "mean_absolute_percentage_error": 10.684759474695865,
+        "root_mean_square_error_m3h": 0.3666581427898675
+    },
+    "regression_coefficients": {
+        "slope": 1.4154504003719612,
+        "intercept": -1.0671906914849023
+    },
+    "bep_summary": {
+        "heads_tested": [
+            20,
+            25,
+            30,
+            35
+        ],
+        "true_bep_flows": [
+            2.6334085334219846,
+            2.8743598409984803,
+            3.1666413198111942,
+            3.4745655872599004
+        ],
+        "proxy_bep_flows": [
+            2.384045009303402,
+            3.211205102216133,
+            3.760491117119131,
+            3.571767931718018
+        ]
+    }
+}
