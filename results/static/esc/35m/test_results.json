@@ -2,7 +2,8 @@
   "test_parameters": {
     "target_head": 35.0,
     "max_iterations": 30,
-    "time_per_evaluation": 5.0,
+    "time_per_evaluation_minutes": 2.5,
+    "noise_level": 0.0,
     "frequency_range": [
       30,
       65
@@ -10,24 +11,27 @@
     "proxy_function": "firstOrderProxy"
   },
   "true_bep": {
-    "flow": 3.3760381849798224,
-    "efficiency": 0.5724223456953746,
-    "frequency": 61.48241206030151
+    "flow": 3.4245117532293614,
+    "efficiency": 0.5724196858469215,
+    "frequency": 62.185929648241206
   },
   "optimizer": {
+    "name": "ESC",
     "predicted_bep": {
-      "flow": 3.6236882019605643,
-      "efficiency": 0.5703077422039775,
-      "frequency": 62.4745902,
-      "iteration": 17
+      "flow": 3.410521036596038,
+      "efficiency": 0.5724225058774833,
+      "frequency": 62.0995082,
+      "iteration": 16,
+      "time_minutes": 40.0
     },
     "metrics": {
-      "relative_flow_error_pct": 7.335521798377466,
-      "efficiency_difference_pct": 0.2114603491397138,
+      "relative_flow_error_pct": 0.40854631671595465,
+      "efficiency_difference_pct": 0.00028200305618453214,
       "evaluations_to_bep": 6,
-      "time_to_bep_minutes": 30.0,
+      "time_to_bep_minutes": 15.0,
       "total_evaluations": 28,
-      "flow_error_abs": 0.24765001698074185
+      "total_time_minutes": 70.0,
+      "converged": true
     }
   }
 }

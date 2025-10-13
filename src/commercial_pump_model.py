@@ -243,7 +243,6 @@ class CommercialPumpSimulator:
         f_ratio = 60.0 / frequency
         eta = self.eff_coeffs['a1']*flow**3*f_ratio**3 + self.eff_coeffs['a2']*flow**2*f_ratio**2 + self.eff_coeffs['a3']*flow*f_ratio + self.eff_coeffs['a4']
         eta = eta * 0.01
-        print(eta)
         
         return float(np.clip(eta, 0.10, 0.65))
     

@@ -2,7 +2,8 @@
   "test_parameters": {
     "target_head": 30.0,
     "max_iterations": 30,
-    "time_per_evaluation": 2.5,
+    "time_per_evaluation_minutes": 2.5,
+    "noise_level": 0.0,
     "frequency_range": [
       30,
       65
@@ -15,19 +16,22 @@
     "frequency": 57.437185929648244
   },
   "optimizer": {
+    "name": "ESC",
     "predicted_bep": {
       "flow": 3.1586678649196163,
       "efficiency": 0.5724226569060908,
       "frequency": 57.5,
-      "iteration": 6
+      "iteration": 6,
+      "time_minutes": 15.0
     },
     "metrics": {
       "relative_flow_error_pct": 0.3236433492261246,
       "efficiency_difference_pct": 0.0004102670729366764,
       "evaluations_to_bep": 6,
-      "time_to_bep_minutes": 30.0,
+      "time_to_bep_minutes": 15.0,
       "total_evaluations": 30,
-      "flow_error_abs": 0.01018983973037102
+      "total_time_minutes": 75.0,
+      "converged": true
     }
   }
 }
