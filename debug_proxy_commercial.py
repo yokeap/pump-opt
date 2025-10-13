@@ -131,9 +131,9 @@ def create_complete_analysis():
     print("="*80)
     
     # Initialize
-    pump = CommercialPumpSimulator(system_head=30.0, noise_level=0.02)
+    pump = CommercialPumpSimulator(system_head=30.0, noise_level=0.00)
     proxy = firstOrderProxy()
-    
+
     # Test heads
     target_heads = [20, 25, 30, 35]
     colors = ['#0072BD', '#D95319', '#77AC30', '#EDB120']
@@ -206,8 +206,8 @@ def create_complete_analysis():
     
     ax1.set_xlabel('Flow (m³/h)', fontsize=13, fontweight='bold')
     ax1.set_ylabel('Efficiency (%)', fontsize=13, fontweight='bold')
-    ax1.set_title('True Pump Efficiency at Constant Head', 
-                 fontsize=14, fontweight='bold', pad=15)
+    # ax1.set_title('True Pump Efficiency at Constant Head', 
+    #              fontsize=14, fontweight='bold', pad=15)
     ax1.legend(title='Head', loc='upper right', frameon=True, 
               edgecolor='black', fancybox=False, fontsize=11)
     ax1.set_xlim(0, 5)
@@ -248,8 +248,8 @@ def create_complete_analysis():
     
     ax2.set_xlabel('Flow (m³/h)', fontsize=13, fontweight='bold')
     ax2.set_ylabel('Q/P Proxy', fontsize=13, fontweight='bold')
-    ax2.set_title('Linear Q/P Proxy at Constant Head', 
-                 fontsize=14, fontweight='bold', pad=15)
+    # ax2.set_title('Linear Q/P Proxy at Constant Head', 
+    #              fontsize=14, fontweight='bold', pad=15)
     ax2.legend(title='Head', loc='upper right', frameon=True, 
               edgecolor='black', fancybox=False, fontsize=11)
     ax2.set_xlim(0, 5)
@@ -309,11 +309,11 @@ def create_complete_analysis():
     
     ax3.set_xlabel('Frequency (Hz)', fontsize=13, fontweight='bold')
     ax3.set_ylabel('Flow (m³/h)', fontsize=13, fontweight='bold')
-    ax3.set_title('Flow vs Frequency at Constant Head', 
-                 fontsize=14, fontweight='bold', pad=15)
+    # ax3.set_title('Flow vs Frequency at Constant Head', 
+    #              fontsize=14, fontweight='bold', pad=15)
     ax3.legend(title='Head', loc='upper left', frameon=True, 
               edgecolor='black', fancybox=False, fontsize=11)
-    ax3.set_xlim(25, 70)
+    ax3.set_xlim(30, 70)
     ax3.set_ylim(0, 5)
     ax3.grid(False)
     
@@ -422,10 +422,10 @@ def create_complete_analysis():
     ax4.text(0.05, 0.95, textstr, transform=ax4.transAxes, fontsize=12,
             verticalalignment='top', bbox=props)
     
-    ax4.set_xlabel('True BEP Flow (m³/h)', fontsize=13, fontweight='bold')
-    ax4.set_ylabel('Proxy BEP Flow (m³/h)', fontsize=13, fontweight='bold')
-    ax4.set_title('BEP Detection: True Efficiency vs Q/P Proxy', 
-                 fontsize=14, fontweight='bold', pad=15)
+    ax4.set_xlabel('True BEP Flow (m³/h)', fontsize=13, fontweight='normal')
+    ax4.set_ylabel('Proxy BEP Flow (m³/h)', fontsize=13, fontweight='normal')
+    # ax4.set_title('BEP Detection: True Efficiency vs Q/P Proxy', 
+    #              fontsize=14, fontweight='bold', pad=15)
     ax4.legend(loc='lower right', frameon=True, 
               edgecolor='black', fancybox=False, fontsize=11)
     ax4.grid(False)
