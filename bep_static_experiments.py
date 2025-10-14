@@ -268,7 +268,7 @@ def create_visualizations(true_bep, results_dict, target_head,output_dir):
                 linestyle='--', linewidth=2, label='True BEP Efficiency')
     ax2.set_xlabel('Evaluations (Iterations)', fontweight='bold')
     ax2.set_ylabel('Best Efficiency Found (%)', fontweight='bold')
-    ax2.set_title('Convergence to BEP', fontweight='bold', pad=15)
+    ax2.set_title(f"Convergence to BEP (H = {target_head}m)", fontweight='bold', pad=15)
     ax2.legend(loc='best', frameon=True, shadow=True)
     ax2.grid(True, alpha=0.3)
     ax2.set_xlim(0, max(iterations))
