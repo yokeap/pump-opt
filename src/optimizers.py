@@ -443,7 +443,43 @@ class ExtremumSeekingControl(BEPOptimizer):
             
         self.current_frequency = next_freq
         return next_freq
-        
+
+    # def suggest_frequency(self) -> float:
+    #     self.iteration += 1
+
+    #     if self.iteration == 1:
+    #         self.proxy_filtered = 0.0
+    #         return self.current_frequency
+
+    #     if self.prev_proxy is not None and self.prev_frequency is not None:
+    #         freq_diff = self.current_frequency - self.prev_frequency
+    #         if abs(freq_diff) > 1e-6:
+    #             gradient = (self.history[-1]['proxy_value'] - self.prev_proxy) / freq_diff
+
+    #             # Smooth direction update (avoid jitter)
+    #             self.direction = 0.8 * self.direction + 0.2 * np.sign(gradient)
+    #             self.direction = np.sign(self.direction)
+
+    #             # Adaptive step size from gradient magnitude
+    #             g_scale = 0.1
+    #             self.step_size = self.initial_step * np.tanh(abs(gradient) / g_scale)
+
+    #             # Gradual damping to contract oscillation
+    #             self.step_size *= 0.95
+
+    #     next_freq = self.current_frequency + self.direction * self.step_size
+
+    #     # Boundary handling
+    #     if next_freq <= self.freq_min:
+    #         next_freq = self.freq_min + 1
+    #         self.direction = 1
+    #     elif next_freq >= self.freq_max:
+    #         next_freq = self.freq_max - 1
+    #         self.direction = -1
+
+    #     self.current_frequency = next_freq
+    #     return next_freq
+
     def update(self, frequency: float, measurement: PumpMeasurement):
         """Update ESC with measurement result"""
         

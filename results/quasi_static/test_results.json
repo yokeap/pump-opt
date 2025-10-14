@@ -1,0 +1,36 @@
+{
+  "test_parameters": {
+    "time_per_eval_minutes": 2.5,
+    "noise_level": 0.0,
+    "head_profile": "35m\u219230m(8h)\u219225m(5h)\u219230m(3h)"
+  },
+  "statistics": {
+    "overall": {
+      "mean_error_pct": 30.998384805184585,
+      "max_error_pct": 57.86711498692112,
+      "std_error_pct": 13.705501907559663,
+      "total_iterations": 384,
+      "duration_hours": 15.958333333333334
+    },
+    "phases": [
+      {
+        "phase": 1,
+        "mean_error_pct": 20.725366206134243,
+        "max_error_pct": 32.972717124656455,
+        "std_error_pct": 7.214200730806926
+      },
+      {
+        "phase": 2,
+        "mean_error_pct": 44.81081437305447,
+        "max_error_pct": 57.86711498692112,
+        "std_error_pct": 7.336592127991544
+      },
+      {
+        "phase": 3,
+        "mean_error_pct": 35.37238512286902,
+        "max_error_pct": 55.97245438402424,
+        "std_error_pct": 12.441544446018872
+      }
+    ]
+  }
+}

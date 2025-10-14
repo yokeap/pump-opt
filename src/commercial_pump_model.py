@@ -46,7 +46,7 @@ class CommercialPumpSimulator:
                  rated_head: float = 35.0,  # m (CORRECTED)
                  rated_eff: float = 0.54,   # 54% (CORRECTED)
                  rated_freq: float = 60.0,  # Hz
-                 noise_level: float = 0.02,
+                 noise_level: float = 0.00,
                  random_seed: Optional[int] = None):
         
         self.system_head = system_head
