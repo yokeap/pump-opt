@@ -26,7 +26,7 @@ rcParams.update({
     'font.size': 18,
     'axes.labelsize': 18,
     'axes.titlesize': 18,
-    'legend.fontsize': 18,
+    'legend.fontsize': 15,
     'xtick.labelsize': 18,
     'ytick.labelsize': 18,
     'mathtext.fontset': 'cm',
@@ -239,13 +239,14 @@ def create_visualizations(true_bep, results_dict, target_head,output_dir):
         ax1.plot(pred_bep['flow'], pred_bep['efficiency'] * 100,
                 marker='v', color=color, markersize=10,
                 markeredgecolor='black', markeredgewidth=1.5,
-                label=f'{opt_name} Predicted BEP', zorder=4)
+                label=f'{opt_name} BEP', zorder=4)
     
     ax1.set_xlabel('Flow Rate (m³/h)', fontweight='bold')
     ax1.set_ylabel('Efficiency (%)', fontweight='bold')
-    ax1.set_title(f"True vs Predicted Efficiency Curve (H = {target_head}m)", fontweight='bold', pad=15)
-    ax1.legend(loc='best', frameon=True, shadow=True)
-    ax1.grid(True, alpha=0.3)
+    ax1.set_ylim(0, 80)
+    # ax1.set_title(f"True vs Predicted Efficiency Curve (H = {target_head}m)", fontweight='bold', pad=15)
+    ax1.legend(loc='upper right', frameon=True, shadow=False)
+    # ax1.grid(False, alpha=0.3)
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'efficiency_curve_comparison.png'), dpi=300)
     plt.savefig(os.path.join(output_dir, 'efficiency_curve_comparison.pdf'))
@@ -267,11 +268,12 @@ def create_visualizations(true_bep, results_dict, target_head,output_dir):
     ax2.axhline(y=true_bep['efficiency'] * 100, color=colors['True BEP'],
                 linestyle='--', linewidth=2, label='True BEP Efficiency')
     ax2.set_xlabel('Evaluations (Iterations)', fontweight='bold')
-    ax2.set_ylabel('Best Efficiency Found (%)', fontweight='bold')
-    ax2.set_title(f"Convergence to BEP (H = {target_head}m)", fontweight='bold', pad=15)
-    ax2.legend(loc='best', frameon=True, shadow=True)
-    ax2.grid(True, alpha=0.3)
+    ax2.set_ylabel('Efficiency (%)', fontweight='bold')
+    # ax2.set_title(f"Convergence to BEP (H = {target_head}m)", fontweight='bold', pad=15)
+    ax2.legend(loc='upper right', frameon=True, shadow=False)
+    # ax2.grid(False, alpha=0.3)
     ax2.set_xlim(0, max(iterations))
+    ax2.set_ylim(min(convergence_eff), 60)
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'convergence_plot.png'), dpi=300)
     plt.savefig(os.path.join(output_dir, 'convergence_plot.pdf'))
