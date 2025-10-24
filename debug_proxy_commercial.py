@@ -135,7 +135,7 @@ def create_complete_analysis():
     proxy = firstOrderProxy()
 
     # Test heads
-    target_heads = [20, 25, 30, 35]
+    target_heads = [20, 25, 30]
     colors = ['#0072BD', '#D95319', '#77AC30', '#EDB120']
     markers = ['o', 's', '^', 'd']
     

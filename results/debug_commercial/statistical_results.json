@@ -3,7 +3,7 @@
         "pearson_r": 1.0,
         "r_squared": 1.0,
         "p_value": 0.0,
-        "sample_size": 4
+        "sample_size": 3
     },
     "error_metrics": {
         "mean_absolute_error_m3h": 0.0,
@@ -11,27 +11,24 @@
         "root_mean_square_error_m3h": 0.0
     },
     "regression_coefficients": {
-        "slope": 0.9999999999999994,
-        "intercept": 3.364452858482109e-15
+        "slope": 0.9999999999999977,
+        "intercept": 6.411566922679774e-15
     },
     "bep_summary": {
         "heads_tested": [
             20,
             25,
-            30,
-            35
+            30
         ],
         "true_bep_flows": [
             2.5824666104383938,
             2.9054738342965396,
-            3.1709303019788444,
-            3.4222133457928616
+            3.1709303019788444
         ],
         "proxy_bep_flows": [
             2.5824666104383938,
             2.9054738342965396,
-            3.1709303019788444,
-            3.4222133457928616
+            3.1709303019788444
         ]
     }
 }

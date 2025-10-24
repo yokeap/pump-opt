@@ -196,13 +196,13 @@ class DynamicHeadSimulator:
         })
 
 def run_dynamic_esc_with_locking(initial_head: float = 30.0,
-                                final_head: float = 24.0,
+                                final_head: float = 20.0,
                                 total_time_hours: float = 9.0,
                                 threshold_delta_q_pct: float = 10.0,
                                 time_per_eval_minutes: float = 2.5,
                                 esc_step_size: float = 1.0,
-                                freq_min: float = 30.0,
-                                freq_max: float = 65.0,
+                                freq_min: float = 40.0,
+                                freq_max: float = 60.0,
                                 convergence_window: int = 10,
                                 convergence_proxy_threshold: float = 0.02,
                                 convergence_freq_threshold: float = 0.5):

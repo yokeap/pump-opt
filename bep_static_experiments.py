@@ -392,7 +392,7 @@ def main():
     print("\n" + "="*80)
     print("RUNNING ESC OPTIMIZER")
     print("="*80)
-    optimizer = ExtremumSeekingControl(freq_min=30, freq_max=65, step_size=2.0, proxy_function=proxy)
+    optimizer = ExtremumSeekingControl(freq_min=10, freq_max=60, step_size=2.0, proxy_function=proxy)
     results = run_optimizer_test(optimizer, pump, target_head, max_iterations, time_per_eval)
     
     print(f"\nPredicted BEP:")
